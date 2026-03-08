@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Feliz Dia das Mulheres</title>
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family: 'Segoe UI', sans-serif;
+}
+
+html, body{
+overflow-x:hidden;
+width:100%;
+}
+
+body{
+min-height:100dvh;
+background:linear-gradient(-45deg,#ff9a9e,#fad0c4,#a18cd1,#89f7fe);
+background-size:400% 400%;
+animation:gradient 10s ease infinite;
+color:white;
+text-align:center;
+overflow:hidden;
+position:relative;
+}
+
+body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:
+linear-gradient(to top, rgba(0,0,0,0.2), #fa8f0b52),
+url('https://i.postimg.cc/wxXr6JRD/Por-deu-Sol.png');
+background-size:cover;
+background-position:center 35%;
+background-repeat:no-repeat;
+opacity:0;
+transition:opacity 5s ease-in-out;
+z-index:0;
+pointer-events:none;
+}
+
+body.final-background::before{
+opacity:1;
+}
+
+@keyframes gradient{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+.container{
+width:min(700px, 90vw);
+padding:40px;
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%) translateZ(0);
+z-index:2;
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:10px;
+}
+
+button{
+margin-top:30px;
+padding:10px 30px;
+font-size:30px;
+border:none;
+border-radius:30px;
+background:#ff8fab;
+color:white;
+cursor:pointer;
+transition:0.3s;
+position:relative;
+z-index:2;
+}
+
+button:hover{
+transform:scale(1.1);
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+.hidden{
+display:none;
+}
+
+#text{
+font-size:30px;
+text-shadow: 0 0 5px black;
+line-height:1.7;
+white-space:pre-line;
+text-align:center;
+height:300px; 
+overflow-y:auto;
+width:100%;
+position:relative;
+z-index:2;
+}
+
+.cursor{
+display:inline-block;
+margin-left:5px;
+animation:blink 1.2s steps(2,start) infinite;
+}
+
+@keyframes blink{
+0%,50%,100%{opacity:1;}
+25%,75%{opacity:0;}
+}
+
+h1{
+font-size:40px;
+margin-bottom:20px;
+position:relative;
+z-index:2;
+}
+
+.name{
+color: #ff5e7f;
+text-shadow: 0 1px #ff9a9e;
+font-size:80px;
+font-weight:bold;
+margin:25px 0;
+animation:fadeIn 2s;
+}
+
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(20px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+.heart{
+position:absolute;
+bottom:-20px;
+font-size:20px;
+animation:float 6s linear infinite;
+opacity:0.7;
+}
+
+@keyframes float{
+0%{transform:translateY(0);opacity:0.7;}
+100%{transform:translateY(-100dvh);opacity:0;}
+}
+
+.progress-bar{
+  width: 700px;         
+  max-width:100%;
+  height:27px;
+  background:rgba(255,255,255,0.3);
+  border-radius:10px;
+  margin-bottom:25px;
+  overflow:hidden;
+  position:relative;  
+  z-index:1;
+  flex-shrink:0;
+}
+
+#progress{
+height:100%;
+width:0%;
+background: linear-gradient(
+90deg,
+#ff8fab,
+#ff5e7f,
+#ff8fab
+);
+background-size:200% 100%;
+animation:shine 3s linear infinite;
+border-radius:10px;
+position:absolute;
+top:0;
+left:0;
+transition: width 0.5s ease-in-out;
+box-shadow:0 0 10px #ff8fab,0 0 20px rgba(255,150,180,0.6);
+}
+@keyframes shine{
+0%{
+background-position:0% 0;
+}
+100%{
+background-position:200% 0;
+}
+}
+
+.flower{
+will-change: transform, left;
+position:absolute;
+font-size:24px;
+pointer-events:none;
+z-index:5;
+transition:left 0.5s ease-in-out;
+display:none;
+top:43%;
+transform:translate(-80%, -50%);
+}
+
+.particle{
+position:absolute;
+width:6px;
+height:6px;
+background:white;
+border-radius:50%;
+opacity:0.4;
+animation:particleFloat linear infinite;
+}
+
+@keyframes particleFloat{
+0%{transform:translateY(0);opacity:0;}
+20%{opacity:0.4;}
+100%{transform:translateY(-100vh);opacity:0;}
+}
+
+.name-glow{
+animation:nameGlow 3s ease-in-out infinite;
+}
+
+@keyframes nameGlow{
+0%{text-shadow:0 0 5px white;}
+50%{text-shadow:0 0 10px white,0 0 20px #ff8fab,0 0 35px #ff8fab;}
+100%{text-shadow:0 0 5px white;}
+}
+
+.rain-flower{
+position:absolute;
+bottom:-30px;
+pointer-events:none;
+animation:flowerFloat 6s linear forwards;
+opacity:0.8;
+}
+
+@keyframes flowerFloat{
+0%{
+transform:translateY(0) rotate(0deg);
+opacity:0.9;
+}
+100%{
+transform:translateY(-120dvh) rotate(360deg);
+opacity:0;
+}
+}
+
+@media (max-width:600px){
+
+.container{
+padding:20px;
+}
+
+.name{
+font-size:45px;
+}
+
+#text{
+font-size:20px;
+height:260px;
+}
+
+button{
+font-size:22px;
+padding:12px 20px;
+}
+
+h1{
+font-size:28px;
+}
+
+.progress-bar{
+height:22px;
+}
+
+}
+
+@keyframes pulseButton{
+0%{
+transform:scale(1);
+box-shadow:0 0 0 0 rgba(255,255,255,0.6);
+}
+
+50%{
+transform:scale(1.08);
+box-shadow:0 0 15px 8px rgba(255,255,255,0.2);
+}
+
+100%{
+transform:scale(1);
+box-shadow:0 0 0 0 rgba(255,255,255,0);
+}
+}
+
+.start-mensagem{
+animation:pulseButton 2s infinite;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div id="start">
+
+<h1>🌸 Uma mensagem especial 🌸</h1>
+<p>Espero que você goste...</p>
+
+<button onclick="start()" class="start-mensagem">Toque para começar</button>
+
+</div>
+
+<div id="story" class="hidden">
+
+  <div class="name">Ketlley Raissy</div>  
+
+	<div class="progress-bar">
+	  <div id="progress"></div>
+	  <div id="flowerEnd" class="flower">🌸</div>
+	</div>
+
+  <div id="text"></div>
+
+  <div style="display:flex; gap:20px; justify-content:center; min-height:85px;">
+    <button id="prev" onclick="prev()" class="hidden">‭Voltar</button>
+    <button id="next" onclick="next()" class="hidden">Continuar</button>
+  </div>
+
+</div>
+
+</div>
+
+
+
+<script>
+const story = [
+`Hoje é um dia especial.
+Um dia para lembrar a força, a beleza e a importância das mulheres que fazem diferença no mundo.`,
+`E entre tantas mulheres incríveis,
+existe uma que merece algumas palavras especiais.`,
+`Talvez a vida seja corrida,
+o trabalho traga estresse
+e os dias às vezes pesem um pouco…`,
+`Mas mesmo assim você continua sendo alguém
+que carrega uma luz própria.`,
+`Uma pessoa que tem um coração cheio de fé,
+que encontra paz nas coisas simples,
+como o som do mar…`,
+`E que, mesmo em meio às dificuldades da vida,
+continua seguindo em frente.`,
+`Você tem uma intensidade bonita de ver.
+Seja nas coisas que gosta,
+nas conversas sobre a vida,
+na forma como se importa com as pessoas
+ou na força que demonstra todos os dias.`,
+`E talvez você nem perceba o quanto é especial…
+mas quem tem a oportunidade de conversar com você
+consegue ver isso com facilidade.`,
+`Que você nunca esqueça a sua força.
+Da sua fé.
+Da pessoa incrível que você é.`,
+`Feliz Dia das Mulheres, Ketlley.
+
+Que sua vida seja cheia de paz,
+conquistas e momentos bons…
+e, quem sabe, muitos dias olhando o mar.`
+];
+
+let paragraph = 0;
+let i = 0;
+let flowersStarted = false;
+let heartColor = "blue";
+let particleInterval, heartInterval, flowerInterval;
+
+
+function start(){
+  document.querySelector("button").style.animation="none";
+  document.getElementById("start").classList.add("hidden");
+  document.getElementById("story").classList.remove("hidden");
+
+  createParticles();
+  createHearts();
+
+  showParagraph();
+}
+
+function showParagraph(){
+  const textEl = document.getElementById("text");
+  textEl.innerHTML="";
+  i = 0;
+
+  document.getElementById("next").classList.add("hidden");
+  document.getElementById("prev").classList.add("hidden");
+
+  typeWriter();
+}
+
+function updateProgress(){
+  let percent = ((paragraph + 1) / story.length);
+  const progressEl = document.getElementById('progress');
+  const flower = document.getElementById('flowerEnd');
+
+  progressEl.style.width = (percent*100) + "%";
+
+  flower.style.display = "block";
+  flower.style.left = (percent*100) + "%";
+}
+
+function typeWriter(){
+  const textEl = document.getElementById("text");
+  let currentText = story[paragraph];
+
+  if(i < currentText.length){
+  textEl.innerHTML = currentText.substring(0,i) + '<span class="cursor">|</span>';
+  i++;
+  setTimeout(typeWriter,30);
+  } else {
+    textEl.innerHTML = currentText;
+
+    if(paragraph > 0) document.getElementById("prev").classList.remove("hidden");
+    if(paragraph < story.length-1) document.getElementById("next").classList.remove("hidden");
+
+    updateProgress(); 
+
+    if(paragraph === story.length-1 && !flowersStarted){
+      flowersStarted = true;
+	  heartColor = "transition";
+	  setTimeout(()=>{
+		heartColor = "pink";
+	  },4000);
+      flowerRain();
+      document.querySelector(".name").classList.add("name-glow");
+      document.body.classList.add("final-background");
+    }
+  }
+}
+
+function next(){
+  if(paragraph < story.length-1){
+    paragraph++;
+    showParagraph();
+  }
+}
+
+function prev(){
+  if(paragraph > 0){
+    paragraph--;
+    showParagraph();
+  }
+}
+
+function createParticles(){
+  particleInterval = setInterval(()=>{
+    let p = document.createElement("div");
+    p.classList.add("particle");
+    p.style.left = Math.random()*90+"vw";
+    p.style.animationDuration = (Math.random()*10+10)+"s";
+    document.body.appendChild(p);
+    setTimeout(()=>p.remove(),20000);
+  },500);
+}
+
+function createHearts(){
+  heartInterval = setInterval(()=>{
+    let heart = document.createElement("div");
+    heart.classList.add("heart");
+
+    let heartEmoji;
+
+    if(heartColor === "blue"){
+      heartEmoji = "💙";
+    }
+    else if(heartColor === "transition"){
+	let rand = Math.random();
+
+	if(rand < 0.7){
+	  heartEmoji = "💜";
+	}
+	else if(rand < 0.85){
+	  heartEmoji = "💙";
+	}
+	else{
+	  heartEmoji = "❤️";
+	}
+    }
+    else{
+      heartEmoji = "❤️";
+    }
+
+    heart.innerHTML = heartEmoji;
+
+    heart.style.left = "calc(" + (Math.random()*100) + "vw - 30px)";
+    heart.style.fontSize = (Math.random()*20+10)+"px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>heart.remove(),6000);
+
+  },400);
+}
+
+function flowerRain(){
+  flowerInterval = setInterval(()=>{
+    let flower = document.createElement("div");
+    flower.classList.add("rain-flower");
+    flower.innerHTML="🌸";
+    flower.style.left = "calc(" + (Math.random()*100) + "vw - 40px)";
+    flower.style.fontSize = (Math.random()*25+15)+"px";
+    flower.style.animationDuration = (Math.random()*3+4)+"s";
+    document.body.appendChild(flower);
+    setTimeout(()=>flower.remove(),7000);
+  },350);
+}
+</script>
+
+</body>
+</html>
